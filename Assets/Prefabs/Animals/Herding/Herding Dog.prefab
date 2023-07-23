@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7481057872906854423
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 449092682501853695, guid: 301a12d3b103eac469c03290336d6ad7,
+        type: 3}
+      propertyPath: m_Name
+      value: Herding Dog
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662285346632921132, guid: 301a12d3b103eac469c03290336d6ad7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662285346632921132, guid: 301a12d3b103eac469c03290336d6ad7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662285346632921132, guid: 301a12d3b103eac469c03290336d6ad7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926550080091744833, guid: 301a12d3b103eac469c03290336d6ad7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0801e8b0d5c03644bb5500405f581e12, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 301a12d3b103eac469c03290336d6ad7, type: 3}
