@@ -24,7 +24,7 @@ public class HerdableRunning : IState
 
     public void OnEnter()
     {
-        herdable.navAgent.acceleration = herdable.runAccel;
+        herdable.navAgent.acceleration = herdable.runAccel1;
         herdable.shouldIdle = false;
         calcNewDestTimer = 0;
     }
@@ -49,10 +49,12 @@ public class HerdableRunning : IState
         if (herdable.HerderWithinInnerDistance())
         {
             herdable.navAgent.speed = herdable.runSpeed2;
+            herdable.navAgent.acceleration = herdable.runAccel2;
         }
         else
         {
             herdable.navAgent.speed = herdable.runSpeed1;
+            herdable.navAgent.acceleration = herdable.runAccel1;
         }
     }
 }

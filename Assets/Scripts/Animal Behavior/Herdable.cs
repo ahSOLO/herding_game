@@ -8,7 +8,8 @@ public class Herdable : MonoBehaviour
 {
     [SerializeField] private float herderDistanceInnerThreshold;
     [SerializeField] private float herderDistanceOuterThreshold;
-    public string currentStateLog;
+    [SerializeField] private bool debugState;
+    [SerializeField] string currentStateLog;
     
     private StateMachine sm;
     private HerdableIdle idleState;
@@ -24,7 +25,8 @@ public class Herdable : MonoBehaviour
     public float wanderAccel;
     public float wanderRange;
     public float runDistance;
-    public float runAccel;
+    public float runAccel1;
+    public float runAccel2;
     public float runSpeed1;
     public float runSpeed2;
     public float calcNewRunDestFrequency;
@@ -60,6 +62,9 @@ public class Herdable : MonoBehaviour
 
     private void Update()
     {
-        currentStateLog = sm.state.ToString();
+        if (debugState)
+        {
+            currentStateLog = sm.state.ToString();
+        }
     }
 }

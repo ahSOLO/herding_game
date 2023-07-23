@@ -23,6 +23,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4266717735166897604, guid: ec0edc6d25c281c4babc76b7f7a4fb46,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4897218794704685888, guid: ec0edc6d25c281c4babc76b7f7a4fb46,
         type: 3}
       propertyPath: m_Name
@@ -64,7 +69,7 @@ NavMeshAgent:
   m_Speed: 4
   m_Acceleration: 12
   avoidancePriority: 50
-  m_AngularSpeed: 560
+  m_AngularSpeed: 720
   m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -87,18 +92,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   herderDistanceInnerThreshold: 6
   herderDistanceOuterThreshold: 9
+  debugState: 1
   currentStateLog: 
   shouldIdle: 1
   navAgent: {fileID: 0}
-  idleDurationMin: 3
+  idleDurationMin: 4
   idleDurationMax: 9
   wanderSpeed: 3.5
-  wanderAccel: 10
-  wanderRange: 10
-  runDistance: 5
-  runAccel: 20
-  runSpeed1: 6.5
-  runSpeed2: 10
+  wanderAccel: 8
+  wanderRange: 8
+  runDistance: 6
+  runAccel1: 15
+  runAccel2: 25
+  runSpeed1: 8.5
+  runSpeed2: 12
   calcNewRunDestFrequency: 0.3
 --- !u!114 &1245077855567272179
 MonoBehaviour:
