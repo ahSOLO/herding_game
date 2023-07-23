@@ -8,8 +8,6 @@ public class Herdable : MonoBehaviour
 {
     [SerializeField] private float herderDistanceInnerThreshold;
     [SerializeField] private float herderDistanceOuterThreshold;
-    [SerializeField] private bool debugState;
-    [SerializeField] string currentStateLog;
     
     private StateMachine sm;
     private HerdableIdle idleState;
@@ -58,13 +56,5 @@ public class Herdable : MonoBehaviour
     public bool HerderWithinInnerDistance()
     {
         return (PlayerController.Instance.transform.position - transform.position).magnitude < herderDistanceInnerThreshold;
-    }
-
-    private void Update()
-    {
-        if (debugState)
-        {
-            currentStateLog = sm.state.ToString();
-        }
     }
 }

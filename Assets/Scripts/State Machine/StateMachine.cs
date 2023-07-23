@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    public IState state;
+    [SerializeField] private bool debugState;
+    [SerializeField] string currentStateLog;
+
+    IState state;
     IState nextState;
     Dictionary<IState, List<Transition>> transitionMap;
     List<Transition> globalTransitions;
@@ -28,6 +31,11 @@ public class StateMachine : MonoBehaviour
         }
 
         state?.Tick();
+
+        if (debugState)
+        {
+            currentStateLog = state.ToString();
+        }
     }
 
     private void FixedUpdate()
