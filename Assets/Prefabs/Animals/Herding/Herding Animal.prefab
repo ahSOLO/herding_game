@@ -65,9 +65,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasLeaped: 0
-  walkingRotSpeed: 25
-  walkingAccel: 20
-  walkingMaxSpd: 6
+  walkingRotSpeed: 20
+  walkingAccel: 25
+  walkingMaxSpd: 7
   runningRotSpeed: 10
   runningAccel: 50
   runningMaxSpd: 12

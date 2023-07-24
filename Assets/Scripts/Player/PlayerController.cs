@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private float acceleration;
     private float maxSpeed;
 
+    [HideInInspector]
     public bool hasLeaped;
     public float walkingRotSpeed;
     public float walkingAccel;

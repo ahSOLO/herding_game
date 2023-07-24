@@ -186,6 +186,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6525685005342413933, guid: 3d7495b2b3060714c8ed8f7dbc0cfc57,
+        type: 3}
+      propertyPath: m_AgentTypeID
+      value: -1372625422
+      objectReference: {fileID: 0}
     - target: {fileID: 8079036569618291519, guid: 3d7495b2b3060714c8ed8f7dbc0cfc57,
         type: 3}
       propertyPath: m_Name
@@ -304,6 +309,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525685005342413933, guid: 3d7495b2b3060714c8ed8f7dbc0cfc57,
+        type: 3}
+      propertyPath: m_AgentTypeID
+      value: -1372625422
       objectReference: {fileID: 0}
     - target: {fileID: 8079036569618291519, guid: 3d7495b2b3060714c8ed8f7dbc0cfc57,
         type: 3}
@@ -587,8 +597,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
+  m_AgentTypeID: -1372625422
+  m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
@@ -940,6 +950,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6525685005342413933, guid: 3d7495b2b3060714c8ed8f7dbc0cfc57,
+        type: 3}
+      propertyPath: m_AgentTypeID
+      value: -1372625422
+      objectReference: {fileID: 0}
     - target: {fileID: 8079036569618291519, guid: 3d7495b2b3060714c8ed8f7dbc0cfc57,
         type: 3}
       propertyPath: m_Name
@@ -1013,6 +1028,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6525685005342413933, guid: 3d7495b2b3060714c8ed8f7dbc0cfc57,
+        type: 3}
+      propertyPath: m_AgentTypeID
+      value: -1372625422
+      objectReference: {fileID: 0}
     - target: {fileID: 8079036569618291519, guid: 3d7495b2b3060714c8ed8f7dbc0cfc57,
         type: 3}
       propertyPath: m_Name
@@ -1035,11 +1055,6 @@ PrefabInstance:
         type: 3}
       propertyPath: herderDistanceThreshold
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238554631382964389, guid: 3d7495b2b3060714c8ed8f7dbc0cfc57,
-        type: 3}
-      propertyPath: herderDistanceOuterThreshold
-      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4085192688117840620, guid: 3d7495b2b3060714c8ed8f7dbc0cfc57,
         type: 3}
@@ -1090,6 +1105,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525685005342413933, guid: 3d7495b2b3060714c8ed8f7dbc0cfc57,
+        type: 3}
+      propertyPath: m_AgentTypeID
+      value: -1372625422
       objectReference: {fileID: 0}
     - target: {fileID: 8079036569618291519, guid: 3d7495b2b3060714c8ed8f7dbc0cfc57,
         type: 3}
@@ -1152,11 +1172,6 @@ PrefabInstance:
         type: 3}
       propertyPath: herderDistanceThreshold
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238554631382964389, guid: 3d7495b2b3060714c8ed8f7dbc0cfc57,
-        type: 3}
-      propertyPath: herderDistanceOuterThreshold
-      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4085192688117840620, guid: 3d7495b2b3060714c8ed8f7dbc0cfc57,
         type: 3}

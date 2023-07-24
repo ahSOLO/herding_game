@@ -64,7 +64,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7821585725526622918}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -1372625422
   m_Radius: 0.5
   m_Speed: 4
   m_Acceleration: 12
@@ -92,8 +92,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   herderDistanceInnerThreshold: 6
   herderDistanceOuterThreshold: 9
-  debugState: 1
-  currentStateLog: 
   shouldIdle: 1
   navAgent: {fileID: 0}
   idleDurationMin: 4
@@ -119,3 +117,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0729d78ec7664e48b943fdfda11e223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugState: 0
+  currentStateLog: 
