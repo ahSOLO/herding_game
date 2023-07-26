@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2805276428228431902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5615281463101089864}
+  - component: {fileID: 973891615986270477}
+  m_Layer: 0
+  m_Name: Trigger
+  m_TagString: Herdable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5615281463101089864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2805276428228431902}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2604451852845294357}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &973891615986270477
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2805276428228431902}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 9
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3422085127167707526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8,6 +61,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 74059013417023045, guid: ec0edc6d25c281c4babc76b7f7a4fb46,
+        type: 3}
+      propertyPath: m_TagString
+      value: Herdable
+      objectReference: {fileID: 0}
     - target: {fileID: 817807280627591827, guid: ec0edc6d25c281c4babc76b7f7a4fb46,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -33,9 +91,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: Herdable Animal
       objectReference: {fileID: 0}
+    - target: {fileID: 4897218794704685888, guid: ec0edc6d25c281c4babc76b7f7a4fb46,
+        type: 3}
+      propertyPath: m_TagString
+      value: Herdable
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222535618587169633, guid: ec0edc6d25c281c4babc76b7f7a4fb46,
+        type: 3}
+      propertyPath: m_TagString
+      value: Herdable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 817807280627591827, guid: ec0edc6d25c281c4babc76b7f7a4fb46,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5615281463101089864}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4897218794704685888, guid: ec0edc6d25c281c4babc76b7f7a4fb46,
         type: 3}
@@ -50,6 +122,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1245077855567272179}
   m_SourcePrefab: {fileID: 100100000, guid: ec0edc6d25c281c4babc76b7f7a4fb46, type: 3}
+--- !u!4 &2604451852845294357 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 817807280627591827, guid: ec0edc6d25c281c4babc76b7f7a4fb46,
+    type: 3}
+  m_PrefabInstance: {fileID: 3422085127167707526}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7821585725526622918 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4897218794704685888, guid: ec0edc6d25c281c4babc76b7f7a4fb46,
@@ -91,7 +169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   herderDistanceInnerThreshold: 6
-  herderDistanceOuterThreshold: 9
   shouldIdle: 1
   navAgent: {fileID: 0}
   idleDurationMin: 4

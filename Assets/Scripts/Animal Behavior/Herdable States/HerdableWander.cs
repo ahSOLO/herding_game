@@ -29,6 +29,7 @@ public class HerdableWander : IState
         Vector2 randomPointInsideUC = Random.insideUnitCircle;
         Vector3 randomDestination = herdable.transform.position + new Vector3(randomPointInsideUC.x, 0, randomPointInsideUC.y) * herdable.wanderRange;
         herdable.navAgent.SetDestination(randomDestination);
+        herdable.currentDestination = randomDestination;
     }
 
     public void OnExit()

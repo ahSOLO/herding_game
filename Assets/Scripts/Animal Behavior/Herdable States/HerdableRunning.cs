@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,17 @@ public class HerdableRunning : IState
 
     public void LateTick()
     {
-        
+        if (herdable.herdablesWithinDistance.Count > 2)
+        {
+            Vector3 flockingDest = herdable.currentDestination;
+            foreach (var herdable_ in herdable.herdablesWithinDistance)
+            {
+                flockingDest += herdable_.currentDestination;
+            }
+            flockingDest /= (herdable.herdablesWithinDistance.Count);
+            herdable.currentDestination = (herdable.currentDestination * 2 / 3) + (flockingDest / 3);
+            herdable.navAgent.SetDestination(herdable.currentDestination);
+        }
     }
 
     public void OnEnter()
@@ -41,7 +52,9 @@ public class HerdableRunning : IState
         if (calcNewDestTimer <= 0)
         {
             Vector3 targetDest = herdable.transform.position + (herdable.transform.position - PlayerController.Instance.transform.position).normalized * herdable.runDistance;
+
             herdable.navAgent.SetDestination(targetDest);
+            herdable.currentDestination = targetDest;
 
             calcNewDestTimer = herdable.calcNewRunDestFrequency;
         }

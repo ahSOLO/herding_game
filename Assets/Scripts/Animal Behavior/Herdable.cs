@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +8,14 @@ using UnityEngine.AI;
 public class Herdable : MonoBehaviour
 {
     [SerializeField] private float herderDistanceInnerThreshold;
-    [SerializeField] private float herderDistanceOuterThreshold;
     
     private StateMachine sm;
     private HerdableIdle idleState;
     private HerdableWander wanderState;
     private HerdableRunning runningState;
+    private bool herderWithinDistance = false;
+    public HashSet<Herdable> herdablesWithinDistance;
+    [HideInInspector] public Vector3 currentDestination;
 
     public bool shouldIdle = true;
     public NavMeshAgent navAgent;
@@ -32,6 +35,8 @@ public class Herdable : MonoBehaviour
     private void Awake()
     {
         navAgent = GetComponent<NavMeshAgent>();
+        herdablesWithinDistance = new HashSet<Herdable>();
+        currentDestination = transform.position;
         sm = GetComponent<StateMachine>();
         idleState = new HerdableIdle(this);
         wanderState = new HerdableWander(this);
@@ -43,14 +48,33 @@ public class Herdable : MonoBehaviour
     {
         sm.AddTransition(idleState, () => shouldIdle == false, wanderState);
         sm.AddTransition(wanderState, () => shouldIdle == true, idleState);
-        sm.AddTransition(runningState, () => !HerderWithinOuterDistance(), idleState);
+        sm.AddTransition(runningState, () => herderWithinDistance == false, idleState);
 
-        sm.AddGlobalTransition(HerderWithinOuterDistance, runningState);
+        sm.AddGlobalTransition(() => herderWithinDistance == true, runningState);
     }
 
-    private bool HerderWithinOuterDistance()
+    private void OnTriggerEnter(Collider other)
     {
-        return (PlayerController.Instance.transform.position - transform.position).magnitude < herderDistanceOuterThreshold;
+        if (other.CompareTag("Player"))
+        {
+            herderWithinDistance = true;
+        }
+        else if (other.CompareTag("Herdable"))
+        {
+            herdablesWithinDistance.Add(other.GetComponentInParent<Herdable>());
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            herderWithinDistance = false;
+        }
+        else if (other.CompareTag("Herdable"))
+        {
+            herdablesWithinDistance.Remove(other.GetComponentInParent<Herdable>());
+        }
     }
 
     public bool HerderWithinInnerDistance()
