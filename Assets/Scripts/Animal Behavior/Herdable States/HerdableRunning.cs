@@ -20,15 +20,10 @@ public class HerdableRunning : IState
 
     public void LateTick()
     {
-        if (herdable.herdablesWithinDistance.Count > 2)
+        if (herdable.herdablesWithinDistance.Count > 0)
         {
-            Vector3 flockingDest = herdable.currentDestination;
-            foreach (var herdable_ in herdable.herdablesWithinDistance)
-            {
-                flockingDest += herdable_.currentDestination;
-            }
-            flockingDest /= (herdable.herdablesWithinDistance.Count);
-            herdable.currentDestination = (herdable.currentDestination * 2 / 3) + (flockingDest / 3);
+            Vector3 flockingDest = herdable.herdablesWithinDistance[UnityEngine.Random.Range(0, herdable.herdablesWithinDistance.Count)].currentDestination;
+            herdable.currentDestination = (herdable.currentDestination * 0.6f) + (flockingDest * 0.4f);
             herdable.navAgent.SetDestination(herdable.currentDestination);
         }
     }

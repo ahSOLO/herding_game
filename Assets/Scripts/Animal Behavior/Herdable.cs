@@ -14,7 +14,7 @@ public class Herdable : MonoBehaviour
     private HerdableWander wanderState;
     private HerdableRunning runningState;
     private bool herderWithinDistance = false;
-    public HashSet<Herdable> herdablesWithinDistance;
+    public List<Herdable> herdablesWithinDistance;
     [HideInInspector] public Vector3 currentDestination;
 
     public bool shouldIdle = true;
@@ -35,7 +35,7 @@ public class Herdable : MonoBehaviour
     private void Awake()
     {
         navAgent = GetComponent<NavMeshAgent>();
-        herdablesWithinDistance = new HashSet<Herdable>();
+        herdablesWithinDistance = new List<Herdable>();
         currentDestination = transform.position;
         sm = GetComponent<StateMachine>();
         idleState = new HerdableIdle(this);
@@ -61,7 +61,7 @@ public class Herdable : MonoBehaviour
         }
         else if (other.CompareTag("Herdable"))
         {
-            herdablesWithinDistance.Add(other.GetComponentInParent<Herdable>());
+            herdablesWithinDistance.Add(other.transform.parent.GetComponent<Herdable>());
         }
     }
 
@@ -73,7 +73,7 @@ public class Herdable : MonoBehaviour
         }
         else if (other.CompareTag("Herdable"))
         {
-            herdablesWithinDistance.Remove(other.GetComponentInParent<Herdable>());
+            herdablesWithinDistance.Remove(other.transform.parent.GetComponent<Herdable>());
         }
     }
 
