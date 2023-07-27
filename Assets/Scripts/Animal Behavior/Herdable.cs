@@ -16,6 +16,7 @@ public class Herdable : MonoBehaviour
     private bool herderWithinDistance = false;
     public List<Herdable> herdablesWithinDistance;
     [HideInInspector] public Vector3 currentDestination;
+    [HideInInspector] public float height;
 
     public bool shouldIdle = true;
     public NavMeshAgent navAgent;
@@ -36,6 +37,7 @@ public class Herdable : MonoBehaviour
     {
         navAgent = GetComponent<NavMeshAgent>();
         herdablesWithinDistance = new List<Herdable>();
+        height = GetComponentInChildren<Collider>().bounds.extents.y;
         currentDestination = transform.position;
         sm = GetComponent<StateMachine>();
         idleState = new HerdableIdle(this);
