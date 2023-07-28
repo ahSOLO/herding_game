@@ -83,6 +83,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4266717735166897604, guid: ec0edc6d25c281c4babc76b7f7a4fb46,
         type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266717735166897604, guid: ec0edc6d25c281c4babc76b7f7a4fb46,
+        type: 3}
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
@@ -169,18 +174,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   herderDistanceInnerThreshold: 6
+  currentDestination: {x: 0, y: 0, z: 0}
+  height: 0
   shouldIdle: 1
   navAgent: {fileID: 0}
   idleDurationMin: 4
   idleDurationMax: 9
-  wanderSpeed: 3.5
-  wanderAccel: 8
+  wanderSpeed: 2.5
+  wanderAccel: 6
   wanderRange: 8
   runDistance: 6
-  runAccel1: 15
-  runAccel2: 25
-  runSpeed1: 8.5
-  runSpeed2: 12
+  runAccel1: 8
+  runAccel2: 16
+  runSpeed1: 4.5
+  runSpeed2: 6
   calcNewRunDestFrequency: 0.3
 --- !u!114 &1245077855567272179
 MonoBehaviour:

@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class HerdableRunning : IState
 {
     private Herdable herdable;
     private float calcNewDestTimer;
+    private float calcNewFlockingDestTimer;
     
     public HerdableRunning(Herdable herdable)
     {
@@ -20,11 +22,15 @@ public class HerdableRunning : IState
 
     public void LateTick()
     {
-        if (herdable.herdablesWithinDistance.Count > 0)
+        calcNewFlockingDestTimer -= Time.deltaTime;
+        
+        if (calcNewFlockingDestTimer <=0 && herdable.herdablesWithinDistance.Count > 0)
         {
-            Vector3 flockingDest = herdable.herdablesWithinDistance[UnityEngine.Random.Range(0, herdable.herdablesWithinDistance.Count)].currentDestination;
+            Vector3 flockingDest = herdable.herdablesWithinDistance.ElementAt(UnityEngine.Random.Range(0, herdable.herdablesWithinDistance.Count)).Value.currentDestination;
             herdable.currentDestination = (herdable.currentDestination * 0.6f) + (flockingDest * 0.4f);
             herdable.navAgent.SetDestination(herdable.currentDestination);
+
+            calcNewFlockingDestTimer = herdable.calcNewRunDestFrequency;
         }
     }
 
@@ -33,6 +39,7 @@ public class HerdableRunning : IState
         herdable.navAgent.acceleration = herdable.runAccel1;
         herdable.shouldIdle = false;
         calcNewDestTimer = 0;
+        calcNewFlockingDestTimer = 0;
     }
 
     public void OnExit()

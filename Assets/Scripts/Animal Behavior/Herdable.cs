@@ -14,7 +14,7 @@ public class Herdable : MonoBehaviour
     private HerdableWander wanderState;
     private HerdableRunning runningState;
     private bool herderWithinDistance = false;
-    public List<Herdable> herdablesWithinDistance;
+    public Dictionary<Herdable, Herdable> herdablesWithinDistance;
     [HideInInspector] public Vector3 currentDestination;
     [HideInInspector] public float height;
 
@@ -36,7 +36,7 @@ public class Herdable : MonoBehaviour
     private void Awake()
     {
         navAgent = GetComponent<NavMeshAgent>();
-        herdablesWithinDistance = new List<Herdable>();
+        herdablesWithinDistance = new Dictionary<Herdable, Herdable>();
         height = GetComponentInChildren<Collider>().bounds.extents.y;
         currentDestination = transform.position;
         sm = GetComponent<StateMachine>();
@@ -63,7 +63,11 @@ public class Herdable : MonoBehaviour
         }
         else if (other.CompareTag("Herdable"))
         {
-            herdablesWithinDistance.Add(other.transform.parent.GetComponent<Herdable>());
+            var herdable = other.transform.parent.GetComponent<Herdable>();
+            if (!herdablesWithinDistance.ContainsKey(herdable))
+            {
+                herdablesWithinDistance.Add(herdable, herdable);
+            }
         }
     }
 
