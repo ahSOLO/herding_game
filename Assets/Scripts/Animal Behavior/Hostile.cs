@@ -52,7 +52,6 @@ public class Hostile : MonoBehaviour
         sm.AddTransition(wanderState, () => shouldIdle == true, idleState);
         sm.AddTransition(fleeState, () => herderWithinDistance == false, idleState);
 
-        sm.AddTransition(idleState, () => herdablesWithinDistance.Count > 0, pursueState);
         sm.AddTransition(wanderState, () => herdablesWithinDistance.Count > 0, pursueState);
 
         sm.AddGlobalTransition(() => herderWithinDistance == true, fleeState);

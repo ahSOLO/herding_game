@@ -13,6 +13,11 @@ public class HerdableTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.GetComponent<HostileTrigger>() != null)
+        {
+            return;
+        }
+
         if (other.CompareTag("Player"))
         {
             herdable.herderWithinDistance = true;
@@ -25,10 +30,23 @@ public class HerdableTrigger : MonoBehaviour
                 herdable.herdablesWithinDistance.Add(herdable, herdable);
             }
         }
+        else if (other.CompareTag("Hostile"))
+        {
+            var hostile = other.transform.parent.GetComponent<Hostile>();
+            if (!herdable.hostilesWithinDistance.ContainsKey(hostile))
+            {
+                herdable.hostilesWithinDistance.Add(hostile, hostile);
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.GetComponent<HostileTrigger>() != null)
+        {
+            return;
+        }
+
         if (other.CompareTag("Player"))
         {
             herdable.herderWithinDistance = false;
@@ -36,6 +54,10 @@ public class HerdableTrigger : MonoBehaviour
         else if (other.CompareTag("Herdable"))
         {
             herdable.herdablesWithinDistance.Remove(other.transform.parent.GetComponent<Herdable>());
+        }
+        else if (other.CompareTag("Hostile"))
+        {
+            herdable.hostilesWithinDistance.Remove(other.transform.parent.GetComponent<Hostile>());
         }
     }
 

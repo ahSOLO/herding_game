@@ -15,6 +15,11 @@ public class HostileTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.GetComponent<HerdableTrigger>() != null)
+        {
+            return;
+        }
+
         switch (type)
         {
             case TriggerType.Outer:
@@ -40,6 +45,11 @@ public class HostileTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.GetComponent<HerdableTrigger>() != null)
+        {
+            return;
+        }
+
         switch (type)
         {
             case TriggerType.Outer:

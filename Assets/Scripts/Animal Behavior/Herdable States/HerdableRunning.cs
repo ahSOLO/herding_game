@@ -53,7 +53,7 @@ public class HerdableRunning : IState
         
         if (calcNewDestTimer <= 0)
         {
-            Vector3 targetDest = herdable.transform.position + (herdable.transform.position - PlayerController.Instance.transform.position).normalized * herdable.runDistance;
+            Vector3 targetDest = herdable.transform.position + (herdable.transform.position - RunningAwayFrom().transform.position).normalized * herdable.runDistance;
 
             herdable.navAgent.SetDestination(targetDest);
             herdable.currentDestination = targetDest;
@@ -71,5 +71,31 @@ public class HerdableRunning : IState
             herdable.navAgent.speed = herdable.runSpeed1;
             herdable.navAgent.acceleration = herdable.runAccel1;
         }
+    }
+
+    private GameObject RunningAwayFrom()
+    {
+        if (herdable.hostilesWithinDistance.Count > 0)
+        {
+            return GetClosestHostile(herdable.hostilesWithinDistance).gameObject;
+        }
+
+        return PlayerController.Instance.gameObject;
+    }
+
+    private Hostile GetClosestHostile(Dictionary<Hostile, Hostile> hostilesWithinDistance)
+    {
+        var closestDistance = Mathf.Infinity;
+        Hostile closestHostile = null;
+
+        foreach (Hostile hostile in hostilesWithinDistance.Keys)
+        {
+            if ((hostile.transform.position - hostile.transform.position).sqrMagnitude < closestDistance)
+            {
+                closestHostile = hostile;
+            }
+        }
+
+        return closestHostile;
     }
 }

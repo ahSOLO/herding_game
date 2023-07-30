@@ -14,6 +14,7 @@ public class Herdable : MonoBehaviour
     private HerdableWander wanderState;
     private HerdableRunning runningState;
     [HideInInspector] public bool herderWithinDistance = false;
+    public Dictionary<Hostile, Hostile> hostilesWithinDistance;
     public Dictionary<Herdable, Herdable> herdablesWithinDistance;
     [HideInInspector] public Vector3 currentDestination;
     [HideInInspector] public float height;
@@ -38,6 +39,7 @@ public class Herdable : MonoBehaviour
     {
         navAgent = GetComponent<NavMeshAgent>();
         herdablesWithinDistance = new Dictionary<Herdable, Herdable>();
+        hostilesWithinDistance = new Dictionary<Hostile, Hostile>();
         height = GetComponentInChildren<Collider>().bounds.extents.y;
         currentDestination = transform.position;
         sm = GetComponent<StateMachine>();
@@ -51,9 +53,10 @@ public class Herdable : MonoBehaviour
     {
         sm.AddTransition(idleState, () => shouldIdle == false, wanderState);
         sm.AddTransition(wanderState, () => shouldIdle == true, idleState);
-        sm.AddTransition(runningState, () => herderWithinDistance == false, idleState);
+        sm.AddTransition(runningState, () => herderWithinDistance == false && hostilesWithinDistance.Count == 0, idleState);
 
         sm.AddGlobalTransition(() => herderWithinDistance == true, runningState);
+        sm.AddGlobalTransition(() => hostilesWithinDistance.Count > 0, runningState);
     }
 
     public bool HerderWithinInnerDistance()
