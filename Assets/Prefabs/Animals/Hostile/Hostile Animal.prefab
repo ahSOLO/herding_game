@@ -119,7 +119,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 16
+  m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3851257019434832222
 MonoBehaviour:
@@ -307,10 +307,10 @@ MonoBehaviour:
   shouldIdle: 1
   navAgent: {fileID: 0}
   idleDurationMin: 6
-  idleDurationMax: 16
+  idleDurationMax: 9
   wanderSpeed: 4
   wanderAccel: 10
-  wanderRange: 4
+  wanderRange: 10
   fleeDistance: 16
   fleeAccel: 15
   fleeSpeed: 10

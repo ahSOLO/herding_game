@@ -25,6 +25,7 @@ public class HostileIdle : IState
     public void OnEnter()
     {
         idleTime = Random.Range(hostile.idleDurationMin, hostile.idleDurationMax);
+        hostile.shouldIdle = true;
     }
 
     public void OnExit()

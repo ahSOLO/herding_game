@@ -40,7 +40,10 @@ public class HostilePursue : IState
         if (calcNewDestTimer <= 0)
         {
             var targetHerdable = GetClosestHerdable(hostile.herdablesWithinDistance);
-            hostile.navAgent.SetDestination(targetHerdable.transform.position);
+            if (targetHerdable != null)
+            {
+                hostile.navAgent.SetDestination(targetHerdable.transform.position);
+            }
         }
     }
 

@@ -25,6 +25,7 @@ public class HerdableIdle : IState
     public void OnEnter()
     {
         idleTime = Random.Range(herdable.idleDurationMin, herdable.idleDurationMax);
+        herdable.shouldIdle = true;
     }
 
     public void OnExit()

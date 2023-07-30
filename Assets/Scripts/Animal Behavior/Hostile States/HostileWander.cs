@@ -27,17 +27,8 @@ public class HostileWander : IState
         hostile.navAgent.acceleration = hostile.wanderAccel;
 
         Vector2 randomPointInsideUC = Random.insideUnitCircle;
-        Vector3 randomDestination = hostile.transform.position + new Vector3(randomPointInsideUC.x, 0, randomPointInsideUC.y) * hostile.wanderRange;
-        randomDestination.y = hostile.transform.position.y - hostile.height;
-        Ray lineOfSightRay = new Ray(hostile.transform.position, randomDestination - hostile.transform.position);
-        if (Physics.Raycast(lineOfSightRay, out RaycastHit hitInfo, hostile.wanderRange + 1f))
-        {
-            hostile.navAgent.SetDestination(hitInfo.point);
-        }
-        else
-        {
-            hostile.shouldIdle = true;
-        }
+        Vector3 randomDestination = PlayerController.Instance.transform.position + new Vector3(randomPointInsideUC.x, 0, randomPointInsideUC.y) * hostile.wanderRange;
+        hostile.navAgent.SetDestination(randomDestination);
     }
 
     public void OnExit()
