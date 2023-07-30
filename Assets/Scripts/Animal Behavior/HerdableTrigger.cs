@@ -24,10 +24,10 @@ public class HerdableTrigger : MonoBehaviour
         }
         else if (other.CompareTag("Herdable"))
         {
-            var herdable = other.transform.parent.GetComponent<Herdable>();
-            if (!herdable.herdablesWithinDistance.ContainsKey(herdable))
+            var herdable_ = other.transform.parent.GetComponent<Herdable>();
+            if (!herdable.herdablesWithinDistance.ContainsKey(herdable_))
             {
-                herdable.herdablesWithinDistance.Add(herdable, herdable);
+                herdable.herdablesWithinDistance.Add(herdable_, herdable_);
             }
         }
         else if (other.CompareTag("Hostile"))

@@ -25,9 +25,9 @@ public class HerdableRunning : IState
         calcNewFlockingDestTimer -= Time.deltaTime;
         
         if (calcNewFlockingDestTimer <=0 && herdable.herdablesWithinDistance.Count > 0)
-        {
+        {            
             Vector3 flockingDest = herdable.herdablesWithinDistance.ElementAt(UnityEngine.Random.Range(0, herdable.herdablesWithinDistance.Count)).Value.currentDestination;
-            herdable.currentDestination = (herdable.currentDestination * 0.6f) + (flockingDest * 0.4f);
+            herdable.currentDestination = (herdable.currentDestination * 0.55f) + (flockingDest * 0.45f);
             herdable.navAgent.SetDestination(herdable.currentDestination);
 
             calcNewFlockingDestTimer = herdable.calcNewRunDestFrequency;

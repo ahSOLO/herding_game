@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   herderDistanceInnerThreshold: 6
+  herderWithinDistance: 0
   currentDestination: {x: 0, y: 0, z: 0}
   height: 0
   shouldIdle: 1
@@ -200,7 +201,7 @@ MonoBehaviour:
   runDistance: 6
   runAccel1: 8
   runAccel2: 16
-  runSpeed1: 4.5
+  runSpeed1: 3.5
   runSpeed2: 6
   calcNewRunDestFrequency: 0.3
 --- !u!114 &1245077855567272179

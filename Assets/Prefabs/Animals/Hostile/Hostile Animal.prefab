@@ -308,12 +308,12 @@ MonoBehaviour:
   navAgent: {fileID: 0}
   idleDurationMin: 6
   idleDurationMax: 16
-  wanderSpeed: 5
+  wanderSpeed: 4
   wanderAccel: 10
   wanderRange: 4
   fleeDistance: 16
   fleeAccel: 15
   fleeSpeed: 10
   pursueAccel: 12
-  pursueSpeed: 8
+  pursueSpeed: 6
   calcNewDestFrequency: 0.3
