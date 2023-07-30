@@ -5,45 +5,44 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(StateMachine), typeof(NavMeshAgent))]
-public class Herdable : MonoBehaviour
+public class Hostile : MonoBehaviour
 {
-    [SerializeField] private float herderDistanceInnerThreshold;
-    
     private StateMachine sm;
-    private HerdableIdle idleState;
-    private HerdableWander wanderState;
-    private HerdableRunning runningState;
+    private HostileIdle idleState;
+    private HostileWander wanderState;
+    private HostilePursue pursueState;
+    private HostileAttack attackState;
+    private HostileFlee fleeState;
     [HideInInspector] public bool herderWithinDistance = false;
     public Dictionary<Herdable, Herdable> herdablesWithinDistance;
-    [HideInInspector] public Vector3 currentDestination;
     [HideInInspector] public float height;
 
     public bool shouldIdle = true;
     public NavMeshAgent navAgent;
 
-    public int maxHP;
     public float idleDurationMin;
     public float idleDurationMax;
     public float wanderSpeed;
     public float wanderAccel;
     public float wanderRange;
-    public float runDistance;
-    public float runAccel1;
-    public float runAccel2;
-    public float runSpeed1;
-    public float runSpeed2;
-    public float calcNewRunDestFrequency;
+    public float fleeDistance;
+    public float fleeAccel;
+    public float fleeSpeed;
+    public float pursueAccel;
+    public float pursueSpeed;
+    public float calcNewDestFrequency;
 
     private void Awake()
     {
         navAgent = GetComponent<NavMeshAgent>();
         herdablesWithinDistance = new Dictionary<Herdable, Herdable>();
         height = GetComponentInChildren<Collider>().bounds.extents.y;
-        currentDestination = transform.position;
         sm = GetComponent<StateMachine>();
-        idleState = new HerdableIdle(this);
-        wanderState = new HerdableWander(this);
-        runningState = new HerdableRunning(this);
+        idleState = new HostileIdle(this);
+        wanderState = new HostileWander(this);
+        pursueState = new HostilePursue(this);
+        attackState = new HostileAttack(this);
+        fleeState = new HostileFlee(this);
         sm.SetInitialState(idleState);
     }
 
@@ -51,13 +50,11 @@ public class Herdable : MonoBehaviour
     {
         sm.AddTransition(idleState, () => shouldIdle == false, wanderState);
         sm.AddTransition(wanderState, () => shouldIdle == true, idleState);
-        sm.AddTransition(runningState, () => herderWithinDistance == false, idleState);
+        sm.AddTransition(fleeState, () => herderWithinDistance == false, idleState);
 
-        sm.AddGlobalTransition(() => herderWithinDistance == true, runningState);
-    }
+        sm.AddTransition(idleState, () => herdablesWithinDistance.Count > 0, pursueState);
+        sm.AddTransition(wanderState, () => herdablesWithinDistance.Count > 0, pursueState);
 
-    public bool HerderWithinInnerDistance()
-    {
-        return (PlayerController.Instance.transform.position - transform.position).magnitude < herderDistanceInnerThreshold;
+        sm.AddGlobalTransition(() => herderWithinDistance == true, fleeState);
     }
 }

@@ -57,11 +57,14 @@ public class StateMachine : MonoBehaviour
 
     private IState CheckTransition()
     {
-        foreach (Transition transition in transitionMap[state])
+        if (transitionMap.ContainsKey(state))
         {
-            if (transition.cond() == true)
+            foreach (Transition transition in transitionMap[state])
             {
-                return transition.toState;
+                if (transition.cond() == true)
+                {
+                    return transition.toState;
+                }
             }
         }
         foreach (Transition transition in globalTransitions)
